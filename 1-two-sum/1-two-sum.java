@@ -12,7 +12,7 @@ class Solution {
            
             for(int i=0;i<nums.length;i++){
                      int sum=target-nums[i];
-                    System.out.println(sum);                            if(main.containsKey(sum)){
+                                               if(main.containsKey(sum)){
                           ans[0]=main.get(sum);
                           ans[1]=i;
                        
