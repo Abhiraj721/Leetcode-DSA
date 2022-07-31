@@ -1,31 +1,19 @@
 class Solution {
     public int[] productExceptSelf(int[] nums) {
-            int product=1;
-            int []ans=new int[nums.length];
-            int index=0;
-            for(int i=0;i<nums.length;i++){
-                    if(nums[i]==0)index++;
-                    product*=nums[i];
-            }
-            if(index==nums.length)return ans;
-            for(int i=0;i<nums.length;i++){
-                    if(nums[i]==0)ans[i]=helper(nums,i);
-                    else ans[i]=product/nums[i];
-            }
-        return ans;
-    }
-        public int helper(int []nums,int ignore){
-                int ans=1;
-                int index=1;
-                for(int i=0;i<nums.length;i++){
-                         System.out.print(nums[i]);
-                        if(i!=ignore){
-                                ans*=nums[i];
-                                index++;
-                               
-                        }
-                }
-                return ans;
+        int []left_product=new int[nums.length];
+        int []right_product=new int[nums.length];
+        int []ans=new int[nums.length];
+        left_product[0]=1;
+        right_product[nums.length-1]=1;
+        for(int i=1;i<nums.length;i++){
+                left_product[i]=nums[i-1]*left_product[i-1];
         }
-      
+        for(int i=nums.length-2;i>=0;i--){
+                right_product[i]=nums[i+1]*right_product[i+1];
+        }
+        for(int i=0;i<nums.length;i++){
+                ans[i]=left_product[i]*right_product[i];
+        }
+            return ans;
+    }
 }
