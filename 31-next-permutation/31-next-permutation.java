@@ -4,7 +4,7 @@ class Solution {
             while(i>=0 && nums[i]>=nums[i+1])i--;
             int j=nums.length-1;
             if(i==-1){
-                    Arrays.sort(nums);
+                reverse(nums,0);
                     return;
             }
             if(i>=0)
