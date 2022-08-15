@@ -1,24 +1,19 @@
 class Solution {
-        List<List<Integer>>res=new ArrayList<>();
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-            backtrack(candidates,target,0,new ArrayList<>(),0);
+        List<List<Integer>>res=new ArrayList<>();
+            backtrack(res,0,new ArrayList<>(),target,0,candidates);
             return res;
-        
     }
-        public void backtrack(int [] candidates,int target,int currsum,  List<Integer>subset,int index){
-                 if(index>=candidates.length || currsum>target){
-                         return;
-                 }
+        public void backtrack  (List<List<Integer>>res,int currsum,List<Integer>subsets,int target,int index,int []candidates){
+                if(index>=candidates.length || currsum>target)return;
                 if(currsum==target){
-                        res.add(new ArrayList<>(subset));
+                        res.add(new ArrayList<>(subsets));
                         return;
                 }
                 for(int i=index;i<candidates.length;i++){
-                        subset.add(candidates[i]);
-                        backtrack(candidates,target,currsum+candidates[i],subset,i);
-                        subset.remove(subset.size()-1);
-                
-        }
-        
+                        subsets.add(candidates[i]);
+                        backtrack(res,currsum+candidates[i],subsets,target,i,candidates);
+                        subsets.remove(subsets.size()-1);
+                }
         }
 }
