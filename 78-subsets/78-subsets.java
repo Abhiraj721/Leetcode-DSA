@@ -1,17 +1,16 @@
 class Solution {
     public List<List<Integer>> subsets(int[] nums) {
-        List<List<Integer>>res=new ArrayList<>();
-            generatesubsets(nums,res,0,new ArrayList<>());
+      List<List<Integer>>res=new ArrayList<>();
+            backtrack(res,0,new ArrayList<>(),nums);
             return res;
     }
-        public void generatesubsets(int []nums,List<List<Integer>>res,int index,List<Integer>current){
-                res.add(new ArrayList<>(current));
+        public void backtrack(List<List<Integer>>res,int index,List<Integer>subsets,int []nums){
+                res.add(new ArrayList<>(subsets));
                 for(int i=index;i<nums.length;i++){
-                        current.add(nums[i]);
-                        generatesubsets(nums,res,i+1,current);
-                        current.remove(current.size()-1);
+                       subsets.add(nums[i]); //adding the current element to our subesets
+                        backtrack(res,i+1,subsets,nums);
+                        subsets.remove(subsets.size()-1);//removing the same element which we have added
                 }
+                return;
         }
 }
-
-
