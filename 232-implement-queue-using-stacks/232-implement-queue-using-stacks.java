@@ -11,10 +11,10 @@ class MyQueue {
     
     public int pop() {
         while(!a.isEmpty()){
-            b.push(a.pop());
+               b.push(a.pop());
         }
         int temp = b.pop();
-        while(!b.isEmpty()){
+            while(!b.isEmpty()){
             a.push(b.pop());
         }
         return temp;
@@ -23,18 +23,18 @@ class MyQueue {
     
     public int peek() {
         while(!a.isEmpty()){
-            b.push(a.pop());
+               b.push(a.pop());
         }
         int temp = b.peek();
-        while(!b.isEmpty()){
+           while(!b.isEmpty()){
            a.push(b.pop());
         }
-        return temp;
+          return temp;
         
     }
     
     public boolean empty() {
-       return a.isEmpty();
+         return a.isEmpty();
     }
 }
 
