@@ -12,7 +12,7 @@ class Solution {
                 }
                 for(int i=pos;i<nums.length;i++){
                         swap(i,pos,nums);
-                       helper(res,pos+1,n,nums);
+                        helper(res,pos+1,n,nums);
                         swap(i,pos,nums);
                 }
         }
