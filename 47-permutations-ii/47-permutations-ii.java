@@ -1,4 +1,5 @@
 class Solution {
+                        HashMap<List<Integer>,Integer>map=new HashMap<>();
     public List<List<Integer>> permuteUnique(int[] nums) {
          List<List<Integer>>res=new ArrayList<>();
             helper(res,0,nums.length,nums);
@@ -7,7 +8,8 @@ class Solution {
         public void helper(List<List<Integer>>res,int pos,int n,int []nums){
                 if(pos>=n){
                         List<Integer>sublist=Convert_to_ArrayList(nums);
-                        if(!res.contains(sublist))res.add(sublist);
+                        if(!map.containsKey(sublist))res.add(sublist);
+                        map.put(sublist,3);
                         return ;
                 }
                 for(int i=pos;i<nums.length;i++){
