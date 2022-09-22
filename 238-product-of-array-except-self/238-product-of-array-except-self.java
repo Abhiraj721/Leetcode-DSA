@@ -8,6 +8,7 @@ class Solution {
         for(int i=1;i<nums.length;i++){
                 left_product[i]=nums[i-1]*left_product[i-1];
         }
+            System.out.print(Arrays.toString(left_product));
         for(int i=nums.length-2;i>=0;i--){
                 right_product[i]=nums[i+1]*right_product[i+1];
         }
