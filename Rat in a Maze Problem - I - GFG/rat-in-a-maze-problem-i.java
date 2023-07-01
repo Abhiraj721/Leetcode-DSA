@@ -42,32 +42,29 @@ class Solution {
     }
    static public void backtrack(int[][] m,String p,int r,int c,ArrayList<String>res)
     {
-        int val=m[r][c];
-        if(val==0)return;
-        
-       
-        if(r==m.length-1 && c==m[0].length-1)
-        {
-            res.add(p);
-            return;
-        }
-         m[r][c]=0;
-        if(c<m.length-1)
-        {
-            backtrack( m, p+"R", r,c+1,res);
-        }
-        if(r<m[0].length-1)
-        {
-            backtrack( m, p+"D", r+1,c,res);
-        }
-        if(c>0)
-        {
-            backtrack( m, p+"L", r,c-1,res);
-        }
-        if(r>0)
-        {
-            backtrack( m, p+"U", r-1,c,res);
-        }
-        m[r][c]=1;
+        if(m[r][c]==0)return;
+       if(r==m.length-1 && c==m.length-1)
+       {
+           res.add(p);
+           return;
+       }
+        m[r][c]=0;
+       if(r<m.length-1)
+       {
+           backtrack(m,p+"D",r+1,c,res);
+       }
+       if(c<m.length-1)
+       {
+           backtrack(m,p+"R",r,c+1,res);
+       }
+       if(r>0)
+       {
+           backtrack(m,p+"U",r-1,c,res);
+       }
+       if(c>0)
+       {
+           backtrack(m,p+"L",r,c-1,res);
+       }
+       m[r][c]=1;
     }
 }
